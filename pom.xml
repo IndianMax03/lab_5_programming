@@ -1,10 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                     http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>Pack</groupId>
-    <artifactId>Artifact</artifactId>
+
+    <groupId>com.github.IndianMax03</groupId>
+    <artifactId>BigProject</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>lab_5_programming</name>
+
+    <url>https://github.com/IndianMax03/lab_5_programming</url>
+
+    <developers>
+        <developer>
+            <id>IndianMax03</id>
+            <name>Maxim Tuchkov</name>
+            <email>vermamanu@mail.ru</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <mockito.version>2.26.0</mockito.version>
+        <junit.version>5.5.2</junit.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <source.plugin.version>3.2.0</source.plugin.version>
+    </properties>
+
 </project>
