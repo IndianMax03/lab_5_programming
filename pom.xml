@@ -22,7 +22,6 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <version>1.0</version>
                             <mainClass>com.github.IndianMax03.lab_5_programming.Main</mainClass>
                         </manifest>
                     </archive>
