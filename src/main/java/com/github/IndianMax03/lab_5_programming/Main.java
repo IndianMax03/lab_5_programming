@@ -1,4 +1,4 @@
-package com.github.IndianMax03.lab_5_programming;
+package com.github.indianMax03.lab_5_programming;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -6,12 +6,12 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.TreeSet;
 import java.util.Scanner;
-import java.io.BufferedOutputStream;
 
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in); // Argument means is where we are reading
+        TreeSet<City> cities = new TreeSet<>();
 
         // ZonedDataTime
         LocalDate date  = LocalDate.of(2003,11, 21);
