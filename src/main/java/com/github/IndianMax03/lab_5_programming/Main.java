@@ -43,12 +43,31 @@ public class Main {
         a = sc.nextInt(); // Scanner
         if (a == 2){
             System.out.println("Данное приложение создано для управления коллекцией объектов в интерактивном" +
-                    " режиме при помощи консольных команд. Приступим к работе!");
+                    " режиме при помощи консольных команд. \nПриступим к работе!\n");
         }
         else if (a == 1){
             System.out.println("Отлично! Приступим к работе");
         }
 
-        sc.close();
+        System.out.println("Для получения справки по командам введите help");
+
+        String cmd;
+
+        do {
+            System.out.println("Введите команду:");
+            cmd = sc.next();
+            switch (cmd){
+                case("help"):
+                    System.out.println("Справка");
+                    break;
+                case ("stop"):
+                    System.out.println("Спасибо за работу, до свидания!");
+                    break;
+                default:
+                    break;
+            }
+        } while (!cmd.equals("stop"));
+
+        // sc.close();
     }
 }
