@@ -5,7 +5,7 @@ public class City {
     private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
-    private java.time.ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
     private float area; //Значение поля должно быть больше 0
     private int population; //Значение поля должно быть больше 0
     private float metersAboveSeaLevel;
@@ -13,6 +13,23 @@ public class City {
     private Government government; //Поле не может быть null
     private StandardOfLiving standardOfLiving; //Поле может быть null
     private Human governor; //Поле не может быть null
+
+    public City(Long id, String name, Coordinates coordinates, ZonedDateTime creationDate, float area, int population,
+                float metersAboveSeaLevel, Climate climate, Government government, StandardOfLiving standardOfLiving,
+                Human governor){
+        setId(id);
+        setName(name);
+        setCoordinates(coordinates);
+        setCreationDate(creationDate);
+        setArea(area);
+        setPopulation(population);
+        setMetersAboveSeaLevel(metersAboveSeaLevel);
+        setClimate(climate);
+        setGovernment(government);
+        setStandardOfLiving(standardOfLiving);
+        setGovernor(governor);
+
+    }
 
     public Long getId() {
         return id;
