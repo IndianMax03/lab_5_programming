@@ -9,6 +9,11 @@ public class Coordinates {
         setY(y);
     }
 
+    @Override
+    public String toString() {
+        return "x = " + this.x + "; y = " + this.y;
+    }
+
     public Double getX() {
         return x;
     }
