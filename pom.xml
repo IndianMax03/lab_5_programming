@@ -22,14 +22,14 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.github.IndianMax03.lab_5_programming.Main</mainClass>
+                            <mainClass>com.github.indianMax03.lab_5_programming.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-    <groupId>com.github.IndianMax03.lab_5_programming</groupId>
+    <groupId>com.github.indianMax03.lab_5_programming</groupId>
     <artifactId>lab_5_programming</artifactId>
     <version>1.0</version>
 

@@ -1,7 +1,9 @@
-package com.github.IndianMax03.lab_5_programming;
+package com.github.indianMax03.lab_5_programming.base;
+
+import java.awt.event.ComponentListener;
 import java.time.ZonedDateTime;
 
-public class City {
+public class City implements Comparable<City> {
     private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
@@ -30,6 +32,19 @@ public class City {
         setGovernor(governor);
 
     }
+
+    public int compareTo (City city){
+        return city.population;
+    }
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
+    // Getters and Setters
 
     public Long getId() {
         return id;

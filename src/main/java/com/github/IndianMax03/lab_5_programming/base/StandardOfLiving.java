@@ -1,4 +1,4 @@
-package com.github.IndianMax03.lab_5_programming;
+package com.github.indianMax03.lab_5_programming.base;
 
 public enum StandardOfLiving {
     ULTRA_HIGH("Очень высокий"),

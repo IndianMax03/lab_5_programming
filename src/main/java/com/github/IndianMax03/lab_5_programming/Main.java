@@ -1,4 +1,6 @@
 package com.github.indianMax03.lab_5_programming;
+// helios ssh s333057@helios.se.ifmo.ru -p 2222
+import com.github.indianMax03.lab_5_programming.base.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -25,6 +27,9 @@ public class Main {
                 11.22f, 666, 52.11f, Climate.TUNDRA, Government.THEOCRACY,
                 StandardOfLiving.HIGH, MaxKing);
         System.out.println(MaxKing.getBirthday());
+        cities.add(MaxCity);
+        System.out.println(cities);
+
 
         // Welcome
         System.out.println("Добро пожаловать в авторское консольное приложение \"Городки\".\n" +
