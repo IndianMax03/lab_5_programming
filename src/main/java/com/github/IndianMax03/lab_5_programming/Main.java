@@ -1,6 +1,7 @@
 package com.github.indianMax03.lab_5_programming;
 // helios ssh s333057@helios.se.ifmo.ru -p 2222
 import com.github.indianMax03.lab_5_programming.base.*;
+import com.github.indianMax03.lab_5_programming.commands.Add;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,20 +16,62 @@ public class Main {
         Scanner sc = new Scanner(System.in); // Argument means is where we are reading
         TreeSet<City> cities = new TreeSet<>();
 
-        // ZonedDataTime
-        LocalDate date  = LocalDate.of(2003,11, 21);
-        LocalTime time = LocalTime.of(12, 30);
-        ZoneId zone = ZoneId.of("Europe/Moscow");
-        ZonedDateTime zoned = ZonedDateTime.of(date, time, zone);
-        // ZonedDataTime
 
-        Human MaxKing = new Human("Максим", 5, zoned);
+        //World Leaders
+        LocalDate putdate  = LocalDate.of(1952,10, 7);
+        LocalTime puttime = LocalTime.of(7, 20);
+        ZoneId putzone = ZoneId.of("Europe/Moscow");
+        ZonedDateTime putzoned = ZonedDateTime.of(putdate, puttime, putzone);
+        Human Putin = new Human("Владимир Владимирович Путин", 170, putzoned);
+
+        LocalDate lukdate  = LocalDate.of(1954,8, 30);
+        LocalTime luktime = LocalTime.of(12, 40);
+        ZoneId lukzone = ZoneId.of("EET");
+        ZonedDateTime lukzoned = ZonedDateTime.of(lukdate, luktime, lukzone);
+        Human Lukashenko = new Human("Александр Григорьевич Лукашенко", 182, lukzoned);
+
+        LocalDate angdate  = LocalDate.of(1954,7, 17);
+        LocalTime angtime = LocalTime.of(12, 40);
+        ZoneId angzone = ZoneId.of("EET");
+        ZonedDateTime angzoned = ZonedDateTime.of(angdate, angtime, angzone);
+        Human Angela = new Human("Ангела Доротея Меркель", 165, angzoned);
+
+        LocalDate kimdate  = LocalDate.of(1984,1, 8);
+        LocalTime kimtime = LocalTime.of(3, 13);
+        ZoneId kimzone = ZoneId.of("Asia/Seoul");
+        ZonedDateTime kimzoned = ZonedDateTime.of(kimdate, kimtime, kimzone);
+        Human KimChenIn = new Human("Ким Чен Ын", 170, kimzoned);
+
+        LocalDate josdate  = LocalDate.of(1942,11, 20);
+        LocalTime jostime = LocalTime.of(6, 52);
+        ZoneId joszone = ZoneId.of("America/New_York");
+        ZonedDateTime joszoned = ZonedDateTime.of(josdate, jostime, joszone);
+        Human Joseph = new Human("Джозеф Робинетт Байден", 182, joszoned);
+
+        LocalDate bardate  = LocalDate.of(1961,8, 4);
+        LocalTime bartime = LocalTime.of(7, 16);
+        ZoneId barzone = ZoneId.of("America/New_York");
+        ZonedDateTime barzoned = ZonedDateTime.of(bardate, bartime, barzone);
+        Human Barak = new Human("Барак Хуссейн Обама", 187, barzoned);
+
+        LocalDate gandate  = LocalDate.of(1869,10, 2);
+        LocalTime gantime = LocalTime.of(10, 39);
+        ZoneId ganzone = ZoneId.of("Asia/Calcutta");
+        ZonedDateTime ganzoned = ZonedDateTime.of(gandate, gantime, ganzone);
+        Human Gandi = new Human("Мохандас Карамчанд Ганди", 165, ganzoned);
+
+        LocalDate makdate  = LocalDate.of(1977,12, 21);
+        LocalTime maktime = LocalTime.of(19, 21);
+        ZoneId makzone = ZoneId.of("Europe/Paris");
+        ZonedDateTime makzoned = ZonedDateTime.of(makdate, maktime, makzone);
+        Human Macron = new Human("Эманнюэль Жан-Мишель Фредерик Макрон",  179, makzoned);
+        //World Leaders
+
+        final Human[] leaders = {Putin, Lukashenko, Angela, KimChenIn, Joseph, Barak, Gandi, Macron};
+
         City MaxCity = new City(123456L, "Moscow", new Coordinates(1.1, 1.6), ZonedDateTime.now(),
                 11.22f, 666, 52.11f, Climate.TUNDRA, Government.THEOCRACY,
-                StandardOfLiving.HIGH, MaxKing);
-        System.out.println(MaxKing.getBirthday());
-        cities.add(MaxCity);
-        System.out.println(cities);
+                StandardOfLiving.HIGH, Putin);
 
 
         // Welcome
@@ -36,12 +79,14 @@ public class Main {
                 "Автор, релизатор, аналитик и генератор идей - Тучков Максим Русланович, группа P3113.\n");
         System.out.println("Для продолжения работы с приложением введите любую цифру. Для выхода из приложения" +
                 " нажмите 0.");
+
+        // Welcome
+
         int a = sc.nextInt(); // Scanner
         if (a == 0) {
             System.out.println("Я думал, мы с вами побудем чуть дольше, но ладно, до свидания!");
             System.exit(0);
         }
-        // Welcome
 
         System.out.println("Введите цифру: \n1. Я знаком, с концепцией приложения и готов приступить к работе \n" +
                 "2. Я не знаком с концепцией приложения и хочу узнать о том, что мне предстоит делать");
@@ -63,7 +108,18 @@ public class Main {
             cmd = sc.next();
             switch (cmd){
                 case("help"):
-                    System.out.println("Справка");
+                    System.out.println("Введите Add, если хотите создать новый элемент коллекции");
+                    break;
+                case ("add"):
+                    City ccity = Add.call(leaders);
+                    cities.add(ccity);
+                    System.out.println("\nЭлемент успешно добавлен!");
+                    System.out.println("Вывожу коллекцию: " + cities);
+
+
+
+
+
                     break;
                 case ("stop"):
                     System.out.println("Спасибо за работу, до свидания!");

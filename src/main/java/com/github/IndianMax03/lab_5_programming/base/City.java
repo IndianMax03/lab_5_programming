@@ -39,9 +39,7 @@ public class City implements Comparable<City> {
 
     @Override
     public String toString() {
-        return "City{" +
-                "name='" + name + '\'' +
-                '}';
+        return name;
     }
 
     // Getters and Setters

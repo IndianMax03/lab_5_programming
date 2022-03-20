@@ -12,6 +12,11 @@ public class Human {
         setBirthday(birthday);
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
     public String getName() {
         return name;
     }
