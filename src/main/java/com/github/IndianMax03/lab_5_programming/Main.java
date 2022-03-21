@@ -1,18 +1,21 @@
 package com.github.indianMax03.lab_5_programming;
 // helios ssh s333057@helios.se.ifmo.ru -p 2222
 import com.github.indianMax03.lab_5_programming.base.*;
-import com.github.indianMax03.lab_5_programming.commands.Add;
+import com.github.indianMax03.lab_5_programming.commands.*;
+import java.lang.reflect.Field;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Arrays;
+import java.util.Locale;
 import java.util.TreeSet;
 import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
         Scanner sc = new Scanner(System.in); // Argument means is where we are reading
         TreeSet<City> cities = new TreeSet<>();
 
@@ -106,28 +109,41 @@ public class Main {
         do {
             System.out.println("Введите команду:");
             cmd = sc.next();
+            cmd = cmd.toLowerCase(Locale.ROOT);
             switch (cmd){
                 case("help"):
-                    System.out.println("Введите Add, если хотите создать новый элемент коллекции");
+                    Help.call();
                     break;
                 case ("add"):
                     City ccity = Add.call(leaders);
                     cities.add(ccity);
                     System.out.println("\nЭлемент успешно добавлен!");
                     System.out.println("Вывожу коллекцию: " + cities);
-
-
-
-
-
                     break;
-                case ("stop"):
-                    System.out.println("Спасибо за работу, до свидания!");
+                case ("clear"):
+                    Clear.call(cities);
+                    System.out.println("Коллекция успешно очищена!");
+                    System.out.println("Вывожу коллекцию: " + cities);
+                    break;
+                case ("exit"):
+                    Exit.call();
+                    break;
+                case ("info"):
+                    Info.call(cities);
+                    break;
+                case ("show"):
+                    Show.call(cities);
+                    break;
+                case("updateid"):
+                    UpdateID.call(cities);
+                    break;
+                case("removebyid"):
+                    RemoveByID.call(cities);
                     break;
                 default:
                     break;
             }
-        } while (!cmd.equals("stop"));
+        } while (true);
 
         // sc.close();
     }
