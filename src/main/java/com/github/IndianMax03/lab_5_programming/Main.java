@@ -114,7 +114,7 @@ public class Main {
                 " нажмите 0.");
 
         //  Welcome
-
+        System.out.print(">");
         int a = sc.nextInt(); // Scanner
         if (a == 0) {
             System.out.println("Я думал, мы с вами побудем чуть дольше, но ладно, до свидания!");
@@ -123,6 +123,7 @@ public class Main {
 
         System.out.println("Введите цифру: \n1. Я знаком, с концепцией приложения и готов приступить к работе \n" +
                 "2. Я не знаком с концепцией приложения и хочу узнать о том, что мне предстоит делать");
+        System.out.print(">");
         a = sc.nextInt(); // Scanner
         if (a == 2){
             System.out.println("Данное приложение создано для управления коллекцией объектов в интерактивном" +
@@ -136,12 +137,12 @@ public class Main {
 
         String cmd;
 
-        do {
-            System.out.println("Введите команду:");
+        while (true) {
+            System.out.print(">");
             cmd = sc.next();
             cmd = cmd.toLowerCase(Locale.ROOT);
-            switch (cmd){
-                case("help"):
+            switch (cmd) {
+                case ("help"):
                     Help.call();
                     break;
                 case ("add"):
@@ -153,7 +154,6 @@ public class Main {
                 case ("clear"):
                     Clear.call(cities);
                     System.out.println("Коллекция успешно очищена!");
-                    System.out.println("Вывожу коллекцию: ");
                     Show.call(cities);
                     break;
                 case ("exit"):
@@ -165,18 +165,27 @@ public class Main {
                 case ("show"):
                     Show.call(cities);
                     break;
-                case("updateid"):
+                case ("update_id"):
                     UpdateID.call(cities);
                     break;
-                case("removebyid"):
+                case ("remove_by_id"):
                     RemoveByID.call(cities);
                     break;
-                case("addifmin"):
+                case ("add_if_min"):
                     AddIfMin.call(cities, leaders);
+                    break;
+                case ("remove_greater"):
+                    RemoveGreater.call(cities);
+                    break;
+                case ("remove_lower"):
+                    RemoveLower.call(cities);
+                    break;
+                case("remove_all_by_government"):
+                    RemoveAllByGovernment.call(cities);
                 default:
                     break;
             }
-        } while (true);
+        }
 
         // sc.close();
     }

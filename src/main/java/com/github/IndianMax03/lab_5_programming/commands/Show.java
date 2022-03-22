@@ -10,7 +10,7 @@ public class Show {
         int i = 0;
         for (City city : collection){
             i += 1;
-            System.out.println(i + ". " + city + ", ID = " + city.getId());
+            System.out.println(i + ". " + city + ", ID = " + city.getId() + ", N = " + city.getPopulation());
         }
     }
 }
