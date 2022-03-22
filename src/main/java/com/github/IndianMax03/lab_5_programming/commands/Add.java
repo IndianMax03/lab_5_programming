@@ -5,12 +5,15 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 public class Add {
 
     public static City call (Human[] leaders) {
+
+        long cID = (long) (Math.random() * 10000 + 1);
+
         Scanner sc = new Scanner(System.in);
-        Long cID = 21L;
 
         System.out.print("\nВведите название города: ");
         String cname = sc.next();
@@ -112,5 +115,53 @@ public class Add {
 
         return new City(cID, cname, cxy, ccreationdate, carea, cpopulation, cmetersabovesealvl, cclimate, cgovernment,
                 cstandart, cgovernor);
+    }
+
+    public static City create (Human[] leaders, String name, Double x, Double y, int year, int month, int day, int hour,
+                               int minute, float area, int population, float meterssea, String climate, String government,
+                               String standart, String governor) {
+
+        long cID = (long) (Math.random() * 10000 + 1);
+
+        Coordinates xy = new Coordinates(x, y);
+
+        ZoneId zone = ZoneId.of("Europe/Moscow");
+        LocalDate date = LocalDate.of(year, month, day);
+        LocalTime time = LocalTime.of(hour, minute);
+        ZonedDateTime creationdate = ZonedDateTime.of(date, time, zone);
+
+        Climate crclimate = Climate.HUMIDCONTINENTAL;
+        if (climate.equals(Climate.SUBARCTIC.toString())){
+            crclimate = Climate.SUBARCTIC;
+        } else if (climate.equals(Climate.TUNDRA.toString())){
+            crclimate = Climate.TUNDRA;
+        }
+
+        Government crgovernment = Government.THEOCRACY;
+        if (government.equals(Government.ANARCHY.toString())) {
+            crgovernment = Government.ANARCHY;
+        } else if (government.equals(Government.DICTATORSHIP.toString())) {
+            crgovernment = Government.DICTATORSHIP;
+        } else if (government.equals(Government.THALASSOCRACY.toString())) {
+            crgovernment = Government.THALASSOCRACY;
+        }
+
+        StandardOfLiving crstandart = StandardOfLiving.HIGH;
+        if (standart.equals(StandardOfLiving.ULTRA_HIGH.toString())) {
+            crstandart = StandardOfLiving.ULTRA_HIGH;
+        } else if (standart.equals(StandardOfLiving.ULTRA_LOW.toString())) {
+            crstandart = StandardOfLiving.ULTRA_LOW;
+        }
+
+        Human crgovernor = null;
+
+        for (Human leader : leaders){
+            if (governor.equals(leader.toString())){
+                crgovernor = leader;
+            }
+        }
+
+        return new City(cID, name, xy, creationdate, area, population, meterssea, crclimate, crgovernment, crstandart,
+                crgovernor);
     }
 }
