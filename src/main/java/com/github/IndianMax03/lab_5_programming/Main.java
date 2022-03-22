@@ -2,22 +2,29 @@ package com.github.indianMax03.lab_5_programming;
 // helios ssh s333057@helios.se.ifmo.ru -p 2222
 import com.github.indianMax03.lab_5_programming.base.*;
 import com.github.indianMax03.lab_5_programming.commands.*;
-import java.lang.reflect.Field;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.TreeSet;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Main {
-    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException, FileNotFoundException {
         Scanner sc = new Scanner(System.in); // Argument means is where we are reading
         TreeSet<City> cities = new TreeSet<>();
+
+        // Map<String, String> env = System.getenv();
+        // for (String envName : env.keySet()) {
+        //     System.out.format("%s=%s%n",
+        //             envName,
+        //             env.get(envName));
+        // }
+        // System.exit(1);
 
 
         //World Leaders
@@ -68,22 +75,45 @@ public class Main {
         ZoneId makzone = ZoneId.of("Europe/Paris");
         ZonedDateTime makzoned = ZonedDateTime.of(makdate, maktime, makzone);
         Human Macron = new Human("Эманнюэль Жан-Мишель Фредерик Макрон",  179, makzoned);
-        //World Leaders
+        //  World Leaders
 
         final Human[] leaders = {Putin, Lukashenko, Angela, KimChenIn, Joseph, Barak, Gandi, Macron};
 
-        City MaxCity = new City(123456L, "Moscow", new Coordinates(1.1, 1.6), ZonedDateTime.now(),
-                11.22f, 666, 52.11f, Climate.TUNDRA, Government.THEOCRACY,
-                StandardOfLiving.HIGH, Putin);
+        //  Parser
+        File input = new File("C:\\Users\\Acer\\Desktop\\Lab_5\\src\\main\\java\\com\\github\\indianMax03\\lab_5_programming\\InputCollection");
+        Scanner read = new Scanner(input);
+        while (read.hasNextLine()) {
+            String line = read.nextLine();
+            String[] fields = line.split(";");
+            String name = fields[0].trim();
+            Double x = Double.parseDouble(fields[1].split(",")[0]);
+            Double y = Double.parseDouble(fields[1].split(",")[1]);
+            int year = Integer.parseInt(fields[2].trim());
+            int month = Integer.parseInt(fields[3].trim());
+            int day = Integer.parseInt(fields[4].trim());
+            int hour = Integer.parseInt(fields[5].trim());
+            int minute = Integer.parseInt(fields[6].trim());
+            float area = Float.parseFloat(fields[7].trim());
+            int population = Integer.parseInt(fields[8].trim());
+            float meterssea = Float.parseFloat(fields[9].trim());
+            String climate = fields[10].trim();
+            String government = fields[11].trim();
+            String standart = fields[12].trim();
+            String governor = fields[13].trim();
+            City crcity = Add.create(leaders, name, x, y, year, month, day, hour, minute, area, population, meterssea,
+                    climate, government, standart, governor);
+            cities.add(crcity);
+        }
+        read.close();
+        // Parser
 
-
-        // Welcome
+        //  Welcome
         System.out.println("Добро пожаловать в авторское консольное приложение \"Городки\".\n" +
                 "Автор, релизатор, аналитик и генератор идей - Тучков Максим Русланович, группа P3113.\n");
         System.out.println("Для продолжения работы с приложением введите любую цифру. Для выхода из приложения" +
                 " нажмите 0.");
 
-        // Welcome
+        //  Welcome
 
         int a = sc.nextInt(); // Scanner
         if (a == 0) {
@@ -117,13 +147,14 @@ public class Main {
                 case ("add"):
                     City ccity = Add.call(leaders);
                     cities.add(ccity);
-                    System.out.println("\nЭлемент успешно добавлен!");
+                    System.out.println("\nГород успешно добавлен!");
                     System.out.println("Вывожу коллекцию: " + cities);
                     break;
                 case ("clear"):
                     Clear.call(cities);
                     System.out.println("Коллекция успешно очищена!");
-                    System.out.println("Вывожу коллекцию: " + cities);
+                    System.out.println("Вывожу коллекцию: ");
+                    Show.call(cities);
                     break;
                 case ("exit"):
                     Exit.call();
@@ -140,6 +171,8 @@ public class Main {
                 case("removebyid"):
                     RemoveByID.call(cities);
                     break;
+                case("addifmin"):
+                    AddIfMin.call(cities, leaders);
                 default:
                     break;
             }
