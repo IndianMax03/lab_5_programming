@@ -46,34 +46,14 @@ public class AddCity {
 
         System.out.println("Введите высоту над уровнем моря: "); float masl = sc.nextFloat();
 
-        System.out.println("Выберите климат: ");
-        for (byte i = 0; i < Climate.values().length; i++){
-            System.out.println((i + 1) + ")" + Climate.values()[i]);
-        }
-        byte climnum = sc.nextByte();
-        Climate climate = Climate.values()[climnum-1];
 
-        System.out.println("Выберите тип правления: ");
-        for (byte i = 0; i < Government.values().length; i++){
-            System.out.println((i + 1) + ")" + Government.values()[i]);
-        }
-        byte govnum = sc.nextByte();
-        Government government = Government.values()[govnum-1];
+        Climate climate = Climate.chooseClimate();
 
-        System.out.println("Выберите уровень жизни: ");
-        for (byte i = 0; i < StandardOfLiving.values().length; i++){
-            System.out.println((i + 1) + ")" + StandardOfLiving.values()[i]);
-        }
-        byte stannum = sc.nextByte();
-        StandardOfLiving standardOfLiving = StandardOfLiving.values()[stannum-1];
+        Government government = Government.chooseGovernment();
 
-        System.out.println("Выберите правителя: ");
-        for (byte i = 0; i < Leaders.values().length; i++){
-            System.out.println((i + 1) + ")" + Leaders.values()[i]);
-        }
-        byte leadnum = sc.nextByte();
-        Leaders leader = Leaders.values()[leadnum-1];
-        Human governor = Human.randomHuman(leader.toString());
+        StandardOfLiving standardOfLiving = StandardOfLiving.chooseStandardOfLiving();
+
+        Human governor = Leaders.chooseLeader();
 
         return new City(id, name, coordinates, creationDate, area, population, masl, climate, government,standardOfLiving,
                 governor);
