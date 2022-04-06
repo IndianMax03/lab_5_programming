@@ -1,4 +1,6 @@
 package com.github.indianMax03.lab_5_programming.base;
+import com.github.indianMax03.lab_5_programming.Main;
+
 import java.time.ZonedDateTime;
 
 public class Human {
@@ -10,6 +12,12 @@ public class Human {
         setName(name);
         setHeight(height);
         setBirthday(birthday);
+    }
+
+    public static Human randomHuman(String name){
+        int height = ((int) (Math.random() * 200)) + 1;
+        ZonedDateTime birthday = ZonedDateTime.now();
+        return new Human(name, height, birthday);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.github.indianMax03.lab_5_programming.commands.patterncommand;
 
 import com.github.indianMax03.lab_5_programming.base.City;
+import com.github.indianMax03.lab_5_programming.commands.Add;
 import com.github.indianMax03.lab_5_programming.commands.addition.AddCity;
 
 import java.util.TreeSet;
@@ -47,6 +48,13 @@ public class Receiver {
         System.out.println("Ваш город успешно добавлен в коллекцию!");
     }
 
+    public void addIfMin(TreeSet<City> collection){
+        System.out.println("Следующий введённый город будет добавлен в колекцию в случае, если его поле population будет " +
+                "наименьшим в коллекции.");
+        System.out.println("На данный момент в коллекции наименьшее значение поля population = " + collection.first().getPopulation());
+        AddCity.addCityIfMin(collection);
+    }
+
     public void show(TreeSet<City> collection){
         if (collection.isEmpty()){
             System.out.println("Коллекция пуста.");
@@ -54,6 +62,15 @@ public class Receiver {
             System.out.println("Элементы коллекции в строковом предствлении: ");
             for (City city : collection){
                 System.out.println(city.toString());
+            }
+        }
+    }
+
+    public void filterStartsWithName(TreeSet<City> collection, String name){
+        System.out.println("Будут выведены элементы коллекции, значение поля name которых начинается с подстроки " + name + ":");
+        for (City city : collection){
+            if (city.getName().startsWith(name)){
+                System.out.println(city);
             }
         }
     }

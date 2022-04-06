@@ -34,12 +34,12 @@ public class City implements Comparable<City> {
 
     @Override
     public int compareTo(City city){
-        return name.compareTo(city.getName());
+        return population - city.getPopulation();
     }
 
     @Override
     public String toString() {
-        return "Город " + name;
+        return "Город " + name + ", id = " + id;
     }
 
     // Getters and Setters

@@ -15,6 +15,16 @@ public class AddCity {
         collection.add(addingcity);
     }
 
+    public static void addCityIfMin(TreeSet<City> collection){
+        City addingcity = createCity();
+        if (addingcity.compareTo(collection.first()) < 0) {
+            collection.add(addingcity);
+            System.out.println("Город успешно добавлен!");
+        } else{
+            System.out.println("Город добавить не удалось.");
+        }
+    }
+
     public static City createCity(){
 
         Scanner sc = new Scanner(System.in);
