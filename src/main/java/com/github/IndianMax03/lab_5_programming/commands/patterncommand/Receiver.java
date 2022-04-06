@@ -5,10 +5,19 @@ import com.github.indianMax03.lab_5_programming.base.Government;
 import com.github.indianMax03.lab_5_programming.commands.addition.AddCity;
 import com.github.indianMax03.lab_5_programming.commands.addition.HelpCalling;
 
+import java.time.ZonedDateTime;
 import java.util.Iterator;
+import java.util.Scanner;
 import java.util.TreeSet;
 
 public class Receiver {
+
+    private final ZonedDateTime creationDate;
+
+
+    public Receiver(){
+        creationDate = ZonedDateTime.now();
+    }
 
     public void help(){
         new HelpCalling();
@@ -72,6 +81,53 @@ public class Receiver {
         System.out.println("Из коллекции будут удалены все элементы, значение поля government которых соответствует данному.");
         Government government = Government.chooseGovernment();
         collection.removeIf(city -> city.getGovernment().equals(government));
+    }
+
+    public void removeById(TreeSet<City> collection, String argument){
+        long id = Long.parseLong(argument);
+        boolean flag = true;
+       for (City city : collection){
+           if (city.getId().equals(id)){
+               System.out.println(city + " удалён из коллекции.");
+               flag = false;
+               break;
+           }
+       }
+       if (flag){
+           System.out.println("Элемента с данным id не существует.");
+       }
+    }
+
+    public void removeGreater(TreeSet<City> collection){
+        System.out.println("Создайте элемент. Из коллекции будут удалены все элементы, превышающие заданный.");
+        City delCity = AddCity.createCity();
+        collection.removeIf(city -> delCity.compareTo(city) > 0);
+    }
+
+    public void removeLower(TreeSet<City> collection){
+        System.out.println("Создайте элемент. Из коллекции будут удалены все элементы, меньшие, чем заданный.");
+        City delCity = AddCity.createCity();
+        collection.removeIf(city -> delCity.compareTo(city) < 0);
+    }
+
+
+    public void info(TreeSet<City> collection){
+        System.out.println("Тип коллекции: " + collection.getClass());
+        System.out.println("Дата инициализации коллекции: " + creationDate);
+        System.out.println("Количество элементов коллекции: " + collection.size());
+    }
+
+    public void updateId(TreeSet<City> collection, String idArgument){
+        long id = Long.parseLong(idArgument);
+        for (City city : collection){
+            if (city.getId() == id){
+                System.out.println("Будет произведена замена элемента " + city);
+                City newCity = AddCity.createCity();
+                newCity.setId(id);
+                collection.remove(city); collection.add(newCity);
+                System.out.println("Элемент успешно изменен. Его поле id останется прежним.");
+            }
+        }
     }
 
 }
