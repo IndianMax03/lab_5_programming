@@ -2,6 +2,7 @@ package com.github.indianMax03.lab_5_programming.commands;
 
 import com.github.indianMax03.lab_5_programming.base.City;
 import com.github.indianMax03.lab_5_programming.commands.patterncommand.Command;
+import com.github.indianMax03.lab_5_programming.commands.patterncommand.Invoker;
 import com.github.indianMax03.lab_5_programming.commands.patterncommand.Receiver;
 
 import java.util.TreeSet;
@@ -15,7 +16,16 @@ public class Clear implements Command {
     }
 
     @Override
-    public void execute(TreeSet<City> collection) {
-        receiver.clear(collection);
+    public String execute(Invoker invoker, TreeSet<City> collection, String argument) {
+        if (argument.isEmpty()) {
+            return receiver.clear(collection);
+        } else {
+            return "Команда clear не принимает аргументы.";
+        }
+    }
+
+    @Override
+    public String getHelp(){
+        return "Введите clear, чтобы очистить коллекцию";
     }
 }

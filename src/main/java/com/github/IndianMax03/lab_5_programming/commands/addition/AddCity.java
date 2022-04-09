@@ -8,44 +8,40 @@ import java.util.TreeSet;
 
 public class AddCity {
 
-    private Human governor;
-
-    public static void addCity(TreeSet<City> collection){
+    public static String addCity(TreeSet<City> collection){
         City addingcity = createCity();
         collection.add(addingcity);
+        return "Город успешно добавлен в коллекцию!";
     }
 
-    public static void addCityIfMin(TreeSet<City> collection){
+    public static String addCityIfMin(TreeSet<City> collection){
         City addingcity = createCity();
         if (addingcity.compareTo(collection.first()) < 0) {
             collection.add(addingcity);
-            System.out.println("Город успешно добавлен!");
+            return "Город успешно добавлен!";
         } else{
-            System.out.println("Город добавить не удалось.");
+            return "Город добавить не удалось.";
         }
     }
 
     public static City createCity(){
 
         Scanner sc = new Scanner(System.in);
+        InputTester inputTester = new InputTester();
 
-        long id = (long) (Math.random() * 10000 + 1);
+        long id = (long) (Math.random() * 1000000 + 1);
 
-        System.out.println("Введите имя города: ");
-        String name = sc.nextLine();
+        String name = inputTester.nameInput();
 
-        System.out.println("Введите координату x: "); double x = sc.nextDouble();
-        System.out.println("Введите координату y: "); double y = sc.nextDouble();
-        Coordinates coordinates = new Coordinates(x, y);
+        Coordinates coordinates = inputTester.coordinatesInput();
 
         ZonedDateTime creationDate = ZonedDateTime.now();
 
-        System.out.println("Введите площадь города: "); float area = sc.nextFloat();
+        float area = inputTester.areaInput();
 
-        System.out.println("Введите население города: "); int population = sc.nextInt();
+        int population = inputTester.populationInput();
 
-        System.out.println("Введите высоту над уровнем моря: "); float masl = sc.nextFloat();
-
+        float masl = inputTester.metersAboveSeaLevelInput();
 
         Climate climate = Climate.chooseClimate();
 
