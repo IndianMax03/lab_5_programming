@@ -1,5 +1,6 @@
 package com.github.indianMax03.lab_5_programming.commands.addition;
 
+import com.github.indianMax03.lab_5_programming.base.Climate;
 import com.github.indianMax03.lab_5_programming.base.Human;
 
 import java.util.Scanner;
@@ -22,12 +23,34 @@ public enum Leaders {
 
     public static Human chooseLeader(){
         Scanner sc = new Scanner(System.in);
+        Byte leadnum;
         System.out.println("Выберите правителя: ");
         for (byte i = 0; i < Leaders.values().length; i++){
             System.out.println((i + 1) + ")" + Leaders.values()[i]);
         }
-        byte leadnum = sc.nextByte();
+        do {
+            String input = sc.nextLine();
+            try {
+                leadnum = Byte.parseByte(input);
+                if (leadnum < 1 || leadnum > 5) {
+                    throw new NumberFormatException();
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Введите одну из предложенных цифр.");
+                leadnum = null;
+            }
+        } while (leadnum == null);
+
         Leaders leader = Leaders.values()[leadnum-1];
         return Human.randomHuman(leader.toString());
+    }
+
+    public static Human checkLeaderValid(String input){
+        for (int i = 0; i < values().length; i++){
+            if (values()[i].toString().equals(input)){
+                return Human.randomHuman(values()[i].toString());
+            }
+        }
+        return null;
     }
 }

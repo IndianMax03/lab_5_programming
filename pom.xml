@@ -7,6 +7,16 @@
 
     <url>https://github.com/IndianMax03/lab_5_programming</url>
 
+    <groupId>com.github.indianMax03.lab_5_programming</groupId>
+    <artifactId>lab_5_programming</artifactId>
+    <packaging>jar</packaging>
+    <version>1.1</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
     <developers>
         <developer>
             <id>IndianMax03</id>
@@ -14,6 +24,17 @@
             <email>vermamanu@mail.ru</email>
         </developer>
     </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>4.0</version>
+        </dependency>
+    </dependencies>
+
+
+
     <build>
         <plugins>
             <plugin>
@@ -29,14 +50,7 @@
             </plugin>
         </plugins>
     </build>
-    <groupId>com.github.indianMax03.lab_5_programming</groupId>
-    <artifactId>lab_5_programming</artifactId>
-    <version>1.0</version>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
 
 </project>
 

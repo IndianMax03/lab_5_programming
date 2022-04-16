@@ -19,10 +19,33 @@ public enum StandardOfLiving {
     public static StandardOfLiving chooseStandardOfLiving(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Выберите уровень жизни: ");
+        Byte stannum;
         for (byte i = 0; i < StandardOfLiving.values().length; i++){
             System.out.println((i + 1) + ")" + StandardOfLiving.values()[i]);
         }
-        byte stannum = sc.nextByte();
+        do {
+            String input = sc.nextLine();
+            try {
+                stannum = Byte.parseByte(input);
+                if (stannum < 1 || stannum > 3) {
+                    throw new NumberFormatException();
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Введите одну из предложенных цифр.");
+                stannum = null;
+            }
+        } while (stannum == null);
+
         return StandardOfLiving.values()[stannum-1];
     }
+
+    public static StandardOfLiving checkClimateValid(String input){
+        for (int i = 0; i < values().length; i++){
+            if (values()[i].toString().equals(input)){
+                return values()[i];
+            }
+        }
+        return null;
+    }
+
 }

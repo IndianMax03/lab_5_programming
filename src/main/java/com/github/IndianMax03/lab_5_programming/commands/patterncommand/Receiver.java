@@ -51,11 +51,7 @@ public class Receiver {
             return "Коллекция пуста.";
         } else {
             System.out.println("Элементы коллекции в строковом предствлении: ");
-            StringBuilder citiesString = new StringBuilder();
-            for (City city : collection) {
-                citiesString.append(city.toString());
-            }
-            return citiesString.toString();
+            return collection.toString();
         }
     }
 
@@ -64,13 +60,13 @@ public class Receiver {
         StringBuilder namesString = new StringBuilder();
         for (City city : collection){
             if (city.getName().startsWith(name)){
-                namesString.append(city);
+                namesString.append(city).append(", ");
             }
         }
         if (namesString.toString().isEmpty()){
             return "Элементов с таким условием в коллекции не найдено!";
         } else {
-            return namesString.toString();
+            return namesString.deleteCharAt(namesString.length() - 2).toString();
         }
     }
 
@@ -82,9 +78,9 @@ public class Receiver {
             StringBuilder descCollection = new StringBuilder();
             Iterator<City> i = collection.descendingIterator();
             while (i.hasNext()){
-                descCollection.append(i.next());
+                descCollection.append(i.next()).append(", ");
             }
-            return descCollection.toString();
+            return descCollection.deleteCharAt(descCollection.length() - 2).toString();
         }
     }
 
@@ -157,6 +153,13 @@ public class Receiver {
             }
         }
         return result;
+    }
+
+    public String save(TreeSet<City> collection){
+        String pathToTarger =
+                "C:\\Users\\Acer\\Desktop\\Lab_5\\src\\main\\java\\com\\github\\indianMax03\\lab_5_programming\\Output.txt";
+
+        return "";
     }
 
 }

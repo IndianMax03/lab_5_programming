@@ -18,11 +18,34 @@ public enum Climate {
 
     public static Climate chooseClimate(){
         Scanner sc = new Scanner(System.in);
+        Byte climnum;
         System.out.println("Выберите климат: ");
-        for (byte i = 0; i < values().length; i++){
+        for (byte i = 0; i < values().length; i++) {
             System.out.println((i + 1) + ")" + values()[i]);
         }
-        byte climnum = sc.nextByte();
+        do {
+            String input = sc.nextLine();
+            try {
+                climnum = Byte.parseByte(input);
+                if (climnum < 1 || climnum > 3) {
+                    throw new NumberFormatException();
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Введите одну из предложенных цифр.");
+                climnum = null;
+            }
+        } while (climnum == null);
+
         return Climate.values()[climnum-1];
     }
+
+    public static Climate checkClimateValid(String input){
+        for (int i = 0; i < values().length; i++){
+            if (values()[i].toString().equals(input)){
+                return values()[i];
+            }
+        }
+        return null;
+    }
+
 }

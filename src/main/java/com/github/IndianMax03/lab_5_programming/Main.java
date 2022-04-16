@@ -1,22 +1,29 @@
 package com.github.indianMax03.lab_5_programming;
 // helios ssh sXXXXXX@helios.se.ifmo.ru -p 2222
-import com.github.indianMax03.lab_5_programming.base.City;
-import com.github.indianMax03.lab_5_programming.commands.*;
+import com.github.indianMax03.lab_5_programming.base.*;
 import com.github.indianMax03.lab_5_programming.commands.addition.AddCommands;
 import com.github.indianMax03.lab_5_programming.commands.patterncommand.*;
 
+import java.io.*;
 import java.util.*;
 
+// todo доделать команды save и exucite_script
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in); // Argument means is where we are reading
         Invoker invoker = new Invoker(); //  Хранилище команд
         TreeSet<City> collection = new TreeSet<>(); //  Main collection
         Receiver receiver = new Receiver(); //  Коробка с командами
 
         AddCommands.addCommands(invoker, receiver);
+
+        /////////////////////////////////
+        WorkWithFile file = new WorkWithFile();
+        file.fillCollection(collection);
+
+        ////////////////////////////////
 
         System.out.println("Для вывода справки по командам введите help.");
         String out = "";
@@ -42,7 +49,7 @@ public class Main {
                     throw new NullPointerException();
                 }
             } catch (NullPointerException e){
-                out = "Такой команды не существует";
+                out = "Такой команды не существует.";
                 System.out.println(out);
             }
         }

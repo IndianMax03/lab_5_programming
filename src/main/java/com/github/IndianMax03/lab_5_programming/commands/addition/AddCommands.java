@@ -26,12 +26,14 @@ public class AddCommands {
         Command removeGreater = new RemoveGreater(receiver);
         invoker.register("remove_greater", removeGreater);
         Command removeLower = new RemoveLower(receiver);
-        invoker.register("remove_greater", removeLower);
+        invoker.register("remove_lower", removeLower);
         Command info = new Info(receiver);
         invoker.register("info", info);
         Command updateId = new UpdateId(receiver);
         invoker.register("update", updateId);
         Command help = new Help(receiver);
         invoker.register("help", help);
+        Command save = new Save(receiver);
+        invoker.register("save", save);
     }
 }
