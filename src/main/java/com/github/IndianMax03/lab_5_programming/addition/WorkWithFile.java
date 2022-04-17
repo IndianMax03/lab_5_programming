@@ -1,8 +1,6 @@
-package com.github.indianMax03.lab_5_programming;
+package com.github.indianMax03.lab_5_programming.addition;
 
 import com.github.indianMax03.lab_5_programming.base.City;
-import com.github.indianMax03.lab_5_programming.commands.addition.AddCity;
-import com.opencsv.CSVReader;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -13,7 +11,7 @@ import java.util.TreeSet;
 public class WorkWithFile {
 
     //todo ПУТЬ ДОЛЖНЫ ПОЛУЧАТЬ ПО-ДРУГОМУ
-    protected void fillCollection(TreeSet<City> collectioin) throws FileNotFoundException{
+    public void fillCollection(TreeSet<City> collectioin) throws FileNotFoundException{
         File file = new File("InputCollection.txt");
 
        Scanner sc = new Scanner(file);
@@ -44,32 +42,22 @@ public class WorkWithFile {
         return splittedLine;
     }
 
-    protected void copyInFile(){
-        String pathToSource =
-                "C:\\Users\\Acer\\Desktop\\Lab_5\\src\\main\\java\\com\\github\\indianMax03\\lab_5_programming\\InputCollection.txt";
+    public String writeInFile(TreeSet<City> collection){
         String pathToTarger =
                 "C:\\Users\\Acer\\Desktop\\Lab_5\\src\\main\\java\\com\\github\\indianMax03\\lab_5_programming\\Output.txt";
+        File file = new File(pathToTarger);
 
-        int bufferSize = 1024 * 8;
-        int indexStartReading = 0;
-
-        try (BufferedInputStream in = new BufferedInputStream(new FileInputStream(pathToSource)); //  Откуда
-
-            BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(pathToTarger))){ //  Куда
-
-            byte[] dataBuffer = new byte[bufferSize];
-
-            int dataLength = in.read(dataBuffer, indexStartReading, bufferSize);
-
-            while( dataLength != 1){
-                out.write(dataBuffer, 0, dataLength);
-                out.flush();
-                dataLength = in.read(dataBuffer, indexStartReading, bufferSize);
+        try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file))) {
+            for (City city : collection){
+                byte[] s = city.cityToString().getBytes(StandardCharsets.UTF_8);
+                out.write(s);
+                out.write("\n".getBytes(StandardCharsets.UTF_8));
             }
-
-        } catch (Exception e) {
-            System.out.println("Чтение окончено.");
+            return "Коллекция успешно записана в файл.";
+        } catch (IOException e){
+            return "Файл не найден.";
         }
+
     }
 
 }

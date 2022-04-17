@@ -1,5 +1,5 @@
 //  Command interface
-package com.github.indianMax03.lab_5_programming.commands.patterncommand;
+package com.github.indianMax03.lab_5_programming.patterncommand;
 
 import com.github.indianMax03.lab_5_programming.base.City;
 

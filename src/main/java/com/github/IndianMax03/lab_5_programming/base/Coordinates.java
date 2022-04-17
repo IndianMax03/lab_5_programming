@@ -11,7 +11,7 @@ public class Coordinates {
 
     @Override
     public String toString() {
-        return this.x + "," + this.y;
+        return this.x + ";" + this.y;
     }
 
     public Double getX() {

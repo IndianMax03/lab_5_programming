@@ -1,6 +1,5 @@
-package com.github.indianMax03.lab_5_programming.commands.addition;
+package com.github.indianMax03.lab_5_programming.addition;
 
-import com.github.indianMax03.lab_5_programming.base.Climate;
 import com.github.indianMax03.lab_5_programming.base.Human;
 
 import java.util.Scanner;

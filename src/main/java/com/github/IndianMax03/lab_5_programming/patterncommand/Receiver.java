@@ -1,11 +1,15 @@
-package com.github.indianMax03.lab_5_programming.commands.patterncommand;
+package com.github.indianMax03.lab_5_programming.patterncommand;
 
 import com.github.indianMax03.lab_5_programming.base.City;
 import com.github.indianMax03.lab_5_programming.base.Government;
-import com.github.indianMax03.lab_5_programming.commands.addition.AddCity;
+import com.github.indianMax03.lab_5_programming.addition.AddCity;
+import com.github.indianMax03.lab_5_programming.addition.WorkWithFile;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.ZonedDateTime;
 import java.util.Iterator;
+import java.util.Scanner;
 import java.util.TreeSet;
 
 public class Receiver {
@@ -84,6 +88,31 @@ public class Receiver {
         }
     }
 
+    public String executeScript(Invoker invoker, TreeSet<City> collection){
+        File file = new File("Script.txt");
+
+        Scanner scanner;
+        try {
+            scanner = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            return "Доступ к файлу не получен.";
+        }
+
+        String out = "";
+        int i = 1;
+
+        while (scanner.hasNextLine()) {
+            String command = scanner.nextLine();
+            if (invoker.getCommandMap().containsKey(command)){
+                System.out.println(invoker.execute(invoker, command, collection, ""));
+                i++;
+            } else {
+                return "Команды в строке " + i + " не существует. Выполнение файла остановлено.";
+            }
+        }
+        return "\nФайл выполнен успешно.";
+    }
+
     public String removeAllByGovernment(TreeSet<City> collection){
         System.out.println("Из коллекции будут удалены все элементы, значение поля government которых соответствует данному.");
         Government government = Government.chooseGovernment();
@@ -156,10 +185,8 @@ public class Receiver {
     }
 
     public String save(TreeSet<City> collection){
-        String pathToTarger =
-                "C:\\Users\\Acer\\Desktop\\Lab_5\\src\\main\\java\\com\\github\\indianMax03\\lab_5_programming\\Output.txt";
-
-        return "";
+        WorkWithFile worker = new WorkWithFile();
+        return worker.writeInFile(collection);
     }
 
 }

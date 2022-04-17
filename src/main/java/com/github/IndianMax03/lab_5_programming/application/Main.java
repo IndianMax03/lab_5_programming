@@ -1,8 +1,8 @@
-package com.github.indianMax03.lab_5_programming;
+package com.github.indianMax03.lab_5_programming.application;
 // helios ssh sXXXXXX@helios.se.ifmo.ru -p 2222
 import com.github.indianMax03.lab_5_programming.base.*;
-import com.github.indianMax03.lab_5_programming.commands.addition.AddCommands;
-import com.github.indianMax03.lab_5_programming.commands.patterncommand.*;
+import com.github.indianMax03.lab_5_programming.addition.WorkWithFile;
+import com.github.indianMax03.lab_5_programming.patterncommand.*;
 
 import java.io.*;
 import java.util.*;
@@ -12,18 +12,14 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in); // Argument means is where we are reading
+        Scanner sc = new Scanner(System.in);
         Invoker invoker = new Invoker(); //  Хранилище команд
         TreeSet<City> collection = new TreeSet<>(); //  Main collection
         Receiver receiver = new Receiver(); //  Коробка с командами
+        WorkWithFile fileworker = new WorkWithFile();
+        fileworker.fillCollection(collection); //  Автозаполнение коллекции
 
-        AddCommands.addCommands(invoker, receiver);
-
-        /////////////////////////////////
-        WorkWithFile file = new WorkWithFile();
-        file.fillCollection(collection);
-
-        ////////////////////////////////
+        AddCommands.addCommands(invoker, receiver); //  Заполнение командами invoker'а
 
         System.out.println("Для вывода справки по командам введите help.");
         String out = "";

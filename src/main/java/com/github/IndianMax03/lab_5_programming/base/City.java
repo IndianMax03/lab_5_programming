@@ -46,6 +46,11 @@ public class City implements Comparable<City> {
         return name;
     }
 
+    public String cityToString(){
+        return this.id+","+this.name+","+this.coordinates+","+this.creationDate+","+this.area+","+this.population+","+
+                this.metersAboveSeaLevel+","+this.climate+","+this.government+","+this.standardOfLiving+","+this.governor;
+    }
+
     // Getters and Setters
 
     public Long getId() {

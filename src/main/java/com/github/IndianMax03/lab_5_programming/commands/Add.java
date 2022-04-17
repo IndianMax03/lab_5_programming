@@ -1,9 +1,9 @@
 package com.github.indianMax03.lab_5_programming.commands;
 
 import com.github.indianMax03.lab_5_programming.base.City;
-import com.github.indianMax03.lab_5_programming.commands.patterncommand.Command;
-import com.github.indianMax03.lab_5_programming.commands.patterncommand.Invoker;
-import com.github.indianMax03.lab_5_programming.commands.patterncommand.Receiver;
+import com.github.indianMax03.lab_5_programming.patterncommand.Command;
+import com.github.indianMax03.lab_5_programming.patterncommand.Invoker;
+import com.github.indianMax03.lab_5_programming.patterncommand.Receiver;
 
 import java.util.TreeSet;
 
