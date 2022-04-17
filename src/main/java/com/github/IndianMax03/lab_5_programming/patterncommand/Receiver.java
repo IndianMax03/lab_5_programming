@@ -2,7 +2,7 @@ package com.github.indianMax03.lab_5_programming.patterncommand;
 
 import com.github.indianMax03.lab_5_programming.base.City;
 import com.github.indianMax03.lab_5_programming.base.Government;
-import com.github.indianMax03.lab_5_programming.input.AddCity;
+import com.github.indianMax03.lab_5_programming.input.*;
 import com.github.indianMax03.lab_5_programming.fileworker.WorkWithFile;
 
 import java.io.File;
@@ -40,14 +40,14 @@ public class Receiver {
     }
 
     public String add(TreeSet<City> collection){
-            return AddCity.addCity(collection);
+            return Adder.addCity(collection);
     }
 
     public String addIfMin(TreeSet<City> collection){
         System.out.println("Следующий введённый город будет добавлен в колекцию в случае, если его поле population будет " +
                 "наименьшим в коллекции.");
         System.out.println("На данный момент в коллекции наименьшее значение поля population = " + collection.first().getPopulation());
-        return AddCity.addCityIfMin(collection);
+        return Adder.addCityIfMin(collection);
     }
 
     public String show(TreeSet<City> collection){
@@ -98,7 +98,6 @@ public class Receiver {
             return "Доступ к файлу не получен.";
         }
 
-        String out = "";
         int i = 1;
 
         while (scanner.hasNextLine()) {
@@ -113,11 +112,20 @@ public class Receiver {
         return "\nФайл выполнен успешно.";
     }
 
-    public String removeAllByGovernment(TreeSet<City> collection){
-        System.out.println("Из коллекции будут удалены все элементы, значение поля government которых соответствует данному.");
-        Government government = Government.chooseGovernment();
-        collection.removeIf(city -> city.getGovernment().equals(government));
-        return "Из коллекции удалены элементы с заданным условием";
+    public String removeAllByGovernment(TreeSet<City> collection, String argument){
+
+        for (Government government : Government.values()){
+
+            if (government.toString().equals(argument)){
+
+                collection.removeIf(city -> city.getGovernment().equals(government));
+
+                return "Элементы коллекции с заданным условием удалены.";
+            }
+
+        }
+
+        return "Такого поля Government не существует.";
     }
 
     public String removeById(TreeSet<City> collection, String argument){
@@ -142,14 +150,14 @@ public class Receiver {
 
     public String removeGreater(TreeSet<City> collection){
         System.out.println("Создайте элемент. Из коллекции будут удалены все элементы, превышающие заданный.");
-        City delCity = AddCity.createCity();
+        City delCity = Adder.createCity();
         collection.removeIf(city -> delCity.compareTo(city) > 0);
         return "Из коллекции удалены элементы с заданным условием";
     }
 
     public String removeLower(TreeSet<City> collection){
         System.out.println("Создайте элемент. Из коллекции будут удалены все элементы, меньшие, чем заданный.");
-        City delCity = AddCity.createCity();
+        City delCity = Adder.createCity();
         collection.removeIf(city -> delCity.compareTo(city) < 0);
         return "Из коллекции удалены элементы с заданным условием";
     }
@@ -175,7 +183,7 @@ public class Receiver {
         for (City city : collection){
             if (city.getId().equals(id)){
                 System.out.println("Будет произведена замена элемента " + city);
-                City newCity = AddCity.createCity();
+                City newCity = Adder.createCity();
                 newCity.setId(id);
                 collection.remove(city); collection.add(newCity);
                 result = "Элемент успешно изменен. Его поле id останется прежним.";

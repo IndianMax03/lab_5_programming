@@ -1,7 +1,7 @@
 package com.github.indianMax03.lab_5_programming.fileworker;
 
 import com.github.indianMax03.lab_5_programming.base.City;
-import com.github.indianMax03.lab_5_programming.input.AddCity;
+import com.github.indianMax03.lab_5_programming.input.Adder;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -22,7 +22,7 @@ public class WorkWithFile {
         while (sc.hasNextLine()) {
             String line = sc.nextLine();
             ArrayList<String> data = splitting(line);
-            String result = AddCity.canAddCityByArray(data, i, collectioin);
+            String result = Adder.canAddCityByArray(data, i, collectioin);
             if (result != null){
                 System.out.println(result);
             }

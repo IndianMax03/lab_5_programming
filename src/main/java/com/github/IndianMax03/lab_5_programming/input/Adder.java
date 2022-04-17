@@ -1,13 +1,12 @@
 package com.github.indianMax03.lab_5_programming.input;
 
-import com.github.indianMax03.lab_5_programming.addition.Leaders;
 import com.github.indianMax03.lab_5_programming.base.*;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
-public class AddCity {
+public class Adder {
 
     public static String addCity(TreeSet<City> collection){
         City addingcity = createCity();
@@ -22,7 +21,7 @@ public class AddCity {
         City addingcity = createCity();
         if (addingcity.compareTo(collection.first()) < 0) {
             collection.add(addingcity);
-            return "Город успешно добавлен!";
+            return "Город успешно добавлен.";
         } else{
             return "Город добавить не удалось.";
         }
@@ -30,7 +29,7 @@ public class AddCity {
 
     public static String canAddCityByArray(ArrayList<String> cityString, int line, TreeSet<City> collection){
         if (cityString.size() != 11){
-            return "Город из строки " + line + " файла создать не удалось: передано неверное количество аргументов";
+            return "Город из строки " + line + " файла создать не удалось: передано неверное количество аргументов.";
         } else {
             City city = createCityByArray(cityString);
             if (city != null) {
@@ -43,19 +42,22 @@ public class AddCity {
         }
     }
 
-    public static City createCityByArray(ArrayList<String> citysFields){
+    private static City createCityByArray(ArrayList<String> citysFields){
+
         Validator validator = new Validator();
+
         Long id = validator.checkIdValid(citysFields.get(0));
         String name = validator.checkNameValid(citysFields.get(1));
         Coordinates coordinates = validator.checkCoordinatesValid(citysFields.get(2));
         ZonedDateTime creationDate = validator.checkDataValid(citysFields.get(3));
         Float area = validator.checkAreaValid(citysFields.get(4));
         Integer population = validator.checkPopulationValid(citysFields.get(5));
-        Float masl = validator.checkMASLValid(citysFields.get(6));
-        Climate climate = Climate.checkClimateValid(citysFields.get(7));
-        Government government = Government.checkCGovernmentValid(citysFields.get(8));
-        StandardOfLiving standardOfLiving = StandardOfLiving.checkClimateValid(citysFields.get(9));
-        Human leader = Leaders.checkLeaderValid(citysFields.get(10));
+        Float masl = validator.checkMetersAboveSeaLevelValid(citysFields.get(6));
+        Climate climate = validator.checkClimateByNameValid(citysFields.get(7));
+        Government government = validator.checkGovernmentByNameValid(citysFields.get(8));
+        StandardOfLiving standardOfLiving = validator.checkStandartOfLivingByNameValid(citysFields.get(9));
+        Human leader = validator.checkLeadersByNameValid(citysFields.get(10));
+
         try {
             return new City(id, name, coordinates, creationDate, area, population, masl, climate, government, standardOfLiving,
                     leader);
@@ -82,13 +84,13 @@ public class AddCity {
 
         float masl = tester.metersAboveSeaLevelInput();
 
-        Climate climate = Climate.chooseClimate();
+        Climate climate = tester.climateInput();
 
-        Government government = Government.chooseGovernment();
+        Government government = tester.governmentInput();
 
-        StandardOfLiving standardOfLiving = StandardOfLiving.chooseStandardOfLiving();
+        StandardOfLiving standardOfLiving = tester.standardOfLivingInput();
 
-        Human governor = Leaders.chooseLeader();
+        Human governor = tester.leaderInput();
 
         return new City(id, name, coordinates, creationDate, area, population, masl, climate, government,standardOfLiving,
                 governor);
