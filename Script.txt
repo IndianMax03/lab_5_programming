@@ -1,9 +1,6 @@
-name
-1;1
-456
-666
-1
-2
-2
-3
-4
+show
+info
+remove_all_by_government Диктатура
+add
+show
+info

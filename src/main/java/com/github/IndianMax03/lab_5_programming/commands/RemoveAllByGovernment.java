@@ -8,6 +8,7 @@ import com.github.indianMax03.lab_5_programming.patterncommand.Receiver;
 import java.util.TreeSet;
 
 public class RemoveAllByGovernment implements Command {
+
     private final Receiver receiver;
 
     public RemoveAllByGovernment(Receiver receiver){
@@ -16,10 +17,11 @@ public class RemoveAllByGovernment implements Command {
 
     @Override
     public String execute(Invoker invoker, TreeSet<City> collection, String argument) {
+
         if (argument.isEmpty()) {
-            return receiver.removeAllByGovernment(collection);
+            return "Команда remove_all_by_government требует аргумента Government.";
         } else {
-            return "Команда remove_all_by_government не принимает аргументы.";
+            return receiver.removeAllByGovernment(collection, argument);
         }
     }
 
