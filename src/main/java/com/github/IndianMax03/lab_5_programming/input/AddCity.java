@@ -1,5 +1,6 @@
-package com.github.indianMax03.lab_5_programming.addition;
+package com.github.indianMax03.lab_5_programming.input;
 
+import com.github.indianMax03.lab_5_programming.addition.Leaders;
 import com.github.indianMax03.lab_5_programming.base.*;
 
 import java.time.ZonedDateTime;
@@ -43,14 +44,14 @@ public class AddCity {
     }
 
     public static City createCityByArray(ArrayList<String> citysFields){
-        InputTester inputTester = new InputTester();
-        Long id = inputTester.checkIdValid(citysFields.get(0));
-        String name = inputTester.checkNameValid(citysFields.get(1));
-        Coordinates coordinates = inputTester.checkXYValid(citysFields.get(2));
-        ZonedDateTime creationDate = inputTester.checkDataValid(citysFields.get(3));
-        Float area = inputTester.checkAreaValid(citysFields.get(4));
-        Integer population = inputTester.checkPopulationValid(citysFields.get(5));
-        Float masl = inputTester.checkMASLValid(citysFields.get(6));
+        Validator validator = new Validator();
+        Long id = validator.checkIdValid(citysFields.get(0));
+        String name = validator.checkNameValid(citysFields.get(1));
+        Coordinates coordinates = validator.checkCoordinatesValid(citysFields.get(2));
+        ZonedDateTime creationDate = validator.checkDataValid(citysFields.get(3));
+        Float area = validator.checkAreaValid(citysFields.get(4));
+        Integer population = validator.checkPopulationValid(citysFields.get(5));
+        Float masl = validator.checkMASLValid(citysFields.get(6));
         Climate climate = Climate.checkClimateValid(citysFields.get(7));
         Government government = Government.checkCGovernmentValid(citysFields.get(8));
         StandardOfLiving standardOfLiving = StandardOfLiving.checkClimateValid(citysFields.get(9));
@@ -65,21 +66,21 @@ public class AddCity {
 
     public static City createCity(){
 
-        InputTester inputTester = new InputTester();
+        Tester tester = new Tester();
 
         long id = (long) (Math.random() * 1000000 + 1);
 
-        String name = inputTester.nameInput();
+        String name = tester.nameInput();
 
-        Coordinates coordinates = inputTester.coordinatesInput();
+        Coordinates coordinates = tester.coordinatesInput();
 
         ZonedDateTime creationDate = ZonedDateTime.now();
 
-        float area = inputTester.areaInput();
+        float area = tester.areaInput();
 
-        int population = inputTester.populationInput();
+        int population = tester.populationInput();
 
-        float masl = inputTester.metersAboveSeaLevelInput();
+        float masl = tester.metersAboveSeaLevelInput();
 
         Climate climate = Climate.chooseClimate();
 

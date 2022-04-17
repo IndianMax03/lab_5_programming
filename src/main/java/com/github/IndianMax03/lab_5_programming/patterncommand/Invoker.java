@@ -18,6 +18,7 @@ public class Invoker {
 
         Command command = commandMap.get(commandName);
         return command.execute(invoker, collection, argument);
+
     }
 
     public HashMap<String, Command> getCommandMap(){

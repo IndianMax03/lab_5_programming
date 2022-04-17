@@ -2,8 +2,8 @@ package com.github.indianMax03.lab_5_programming.patterncommand;
 
 import com.github.indianMax03.lab_5_programming.base.City;
 import com.github.indianMax03.lab_5_programming.base.Government;
-import com.github.indianMax03.lab_5_programming.addition.AddCity;
-import com.github.indianMax03.lab_5_programming.addition.WorkWithFile;
+import com.github.indianMax03.lab_5_programming.input.AddCity;
+import com.github.indianMax03.lab_5_programming.fileworker.WorkWithFile;
 
 import java.io.File;
 import java.io.FileNotFoundException;

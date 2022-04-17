@@ -1,7 +1,7 @@
 package com.github.indianMax03.lab_5_programming.application;
 // helios ssh sXXXXXX@helios.se.ifmo.ru -p 2222
 import com.github.indianMax03.lab_5_programming.base.*;
-import com.github.indianMax03.lab_5_programming.addition.WorkWithFile;
+import com.github.indianMax03.lab_5_programming.fileworker.WorkWithFile;
 import com.github.indianMax03.lab_5_programming.patterncommand.*;
 
 import java.io.*;
@@ -22,7 +22,7 @@ public class Main {
         AddCommands.addCommands(invoker, receiver); //  Заполнение командами invoker'а
 
         System.out.println("Для вывода справки по командам введите help.");
-        String out = "";
+        String out;
         while (true) {
             System.out.print("Введите команду:\n>");
             String[] commandline = sc.nextLine().trim().split(" ");

@@ -1,6 +1,7 @@
-package com.github.indianMax03.lab_5_programming.addition;
+package com.github.indianMax03.lab_5_programming.fileworker;
 
 import com.github.indianMax03.lab_5_programming.base.City;
+import com.github.indianMax03.lab_5_programming.input.AddCity;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
