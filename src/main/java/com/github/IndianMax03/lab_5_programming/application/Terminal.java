@@ -21,20 +21,18 @@ public class Terminal {
 
 	}
 
-	public String startFile(File file) {
+	public String startFile(String filename) throws FileNotFoundException {
 
-		try {
-			this.scanner = new Scanner(file);
-		} catch (FileNotFoundException e){
-			return "Файл не найден.";
-		}
+		String pathToFile = new File(filename).getAbsolutePath();
+		File file = new File(pathToFile);
+		this.scanner = new Scanner(file);
 
 		while (scanner.hasNextLine()){
 
-			String commandline = scanner.nextLine();
+			String commandLine = scanner.nextLine();
 
 			try {
-				out = lineHandler(commandline);
+				out = lineHandler(commandLine);
 				if (out == null){
 					return "Выполнение файла окончено командой exit.";
 				}
@@ -44,9 +42,7 @@ public class Terminal {
 			}
 
 		}
-
-		return "Файл выполнен успешно";
-
+		return "Выполнение файла окончено.";
 	}
 
 	protected void startKeyboard(){
@@ -74,16 +70,22 @@ public class Terminal {
 		}
 	}
 
-	protected String lineHandler(String input) throws NullPointerException {
+	protected String lineHandler(String line) throws NullPointerException {
 
-		String[] commandLine = input.trim().split(" ");
-		String command = commandLine[0];
+		String[] commandLine = line.trim().split(" ");
+		String command = commandLine[0].trim();
+
 		if (commandLine.length == 1) {
 			out = invoker.execute(invoker, command, collection, "");
 			return out;
 		} else if (commandLine.length == 2) {
-			out = invoker.execute(invoker, command, collection, commandLine[1]);
+
+			String argument = commandLine[1];
+
+			out = invoker.execute(invoker, command, collection, argument);
+
 			return out;
+
 		} else {
 			throw new NullPointerException();
 		}

@@ -14,16 +14,18 @@ public class Main {
 
     public static void main(String[] args) {
 
+        String path = System.getenv("path");
+
         Invoker invoker = new Invoker(); //  Хранилище команд
         TreeSet<City> collection = new TreeSet<>(); //  Main collection
         Receiver receiver = new Receiver(); //  Коробка с командами
         WorkWithFile fileworker = new WorkWithFile();
 
         try {
-            fileworker.fillCollection(collection); //  Автозаполнение коллекции
+            fileworker.fillCollection(collection, path); //  Автозаполнение коллекции
         } catch (FileNotFoundException e) {
             System.out.println("Файл с входной коллекцией не найден");
-            System.exit(-1);
+            System.exit(0);
         }
 
         AddCommands.addCommands(invoker, receiver); //  Заполнение командами invoker'а

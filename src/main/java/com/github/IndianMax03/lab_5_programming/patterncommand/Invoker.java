@@ -17,6 +17,7 @@ public class Invoker {
     public String execute(Invoker invoker, String commandName, TreeSet<City> collection, String argument){
 
         Command command = commandMap.get(commandName);
+
         return command.execute(invoker, collection, argument);
 
     }

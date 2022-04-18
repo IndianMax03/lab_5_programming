@@ -1,11 +1,2 @@
-show
 info
-remove_all_by_government Диктатура
-add
-show
-info
-clear
-info
-show
-add
-remove_lower
+execute_script Script1.txt

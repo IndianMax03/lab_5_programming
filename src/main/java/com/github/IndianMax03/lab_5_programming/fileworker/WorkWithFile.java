@@ -12,8 +12,9 @@ import java.util.TreeSet;
 public class WorkWithFile {
 
     //todo ПУТЬ ДОЛЖНЫ ПОЛУЧАТЬ ПО-ДРУГОМУ
-    public void fillCollection(TreeSet<City> collectioin) throws FileNotFoundException{
-        File file = new File("InputCollection.txt");
+    public void fillCollection(TreeSet<City> collectioin, String path) throws FileNotFoundException{
+
+        File file = new File(path);
 
        Scanner sc = new Scanner(file);
 

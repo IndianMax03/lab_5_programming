@@ -7,7 +7,9 @@ import com.github.indianMax03.lab_5_programming.input.*;
 import com.github.indianMax03.lab_5_programming.fileworker.WorkWithFile;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.TreeSet;
 
@@ -87,13 +89,12 @@ public class Receiver {
         }
     }
 
-    public String executeScript(Invoker invoker, TreeSet<City> collection, String argument){
+    public String executeScript(Invoker invoker, TreeSet<City> collection, String filename) throws FileNotFoundException {
 
-        File file = new File(argument);
+        Terminal terminal = new Terminal(invoker, collection);
 
-        Terminal untouchableTerminal = new Terminal(invoker, collection);
+        return terminal.startFile(filename);
 
-        return untouchableTerminal.startFile(file);
     }
 
     public String removeAllByGovernment(TreeSet<City> collection, String argument){
