@@ -1,15 +1,14 @@
 package com.github.indianMax03.lab_5_programming.patterncommand;
 
+import com.github.indianMax03.lab_5_programming.application.Terminal;
 import com.github.indianMax03.lab_5_programming.base.City;
 import com.github.indianMax03.lab_5_programming.base.Government;
 import com.github.indianMax03.lab_5_programming.input.*;
 import com.github.indianMax03.lab_5_programming.fileworker.WorkWithFile;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.time.ZonedDateTime;
 import java.util.Iterator;
-import java.util.Scanner;
 import java.util.TreeSet;
 
 public class Receiver {
@@ -88,28 +87,13 @@ public class Receiver {
         }
     }
 
-    public String executeScript(Invoker invoker, TreeSet<City> collection){
-        File file = new File("Script.txt");
+    public String executeScript(Invoker invoker, TreeSet<City> collection, String argument){
 
-        Scanner scanner;
-        try {
-            scanner = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            return "Доступ к файлу не получен.";
-        }
+        File file = new File(argument);
 
-        int i = 1;
+        Terminal untouchableTerminal = new Terminal(invoker, collection);
 
-        while (scanner.hasNextLine()) {
-            String command = scanner.nextLine();
-            if (invoker.getCommandMap().containsKey(command)){
-                System.out.println(invoker.execute(invoker, command, collection, ""));
-                i++;
-            } else {
-                return "Команды в строке " + i + " не существует. Выполнение файла остановлено.";
-            }
-        }
-        return "\nФайл выполнен успешно.";
+        return untouchableTerminal.startFile(file);
     }
 
     public String removeAllByGovernment(TreeSet<City> collection, String argument){
@@ -192,9 +176,12 @@ public class Receiver {
         return result;
     }
 
-    public String save(TreeSet<City> collection){
+    public String save(TreeSet<City> collection, String argument){
+
         WorkWithFile worker = new WorkWithFile();
-        return worker.writeInFile(collection);
+
+        return worker.writeInFile(collection, argument);
+
     }
 
 }

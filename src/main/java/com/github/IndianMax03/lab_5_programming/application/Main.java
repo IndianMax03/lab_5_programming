@@ -12,18 +12,25 @@ import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
         Invoker invoker = new Invoker(); //  Хранилище команд
         TreeSet<City> collection = new TreeSet<>(); //  Main collection
         Receiver receiver = new Receiver(); //  Коробка с командами
         WorkWithFile fileworker = new WorkWithFile();
-        fileworker.fillCollection(collection); //  Автозаполнение коллекции
+
+        try {
+            fileworker.fillCollection(collection); //  Автозаполнение коллекции
+        } catch (FileNotFoundException e) {
+            System.out.println("Файл с входной коллекцией не найден");
+            System.exit(-1);
+        }
+
         AddCommands.addCommands(invoker, receiver); //  Заполнение командами invoker'а
 
         Terminal terminal = new Terminal(invoker, collection); //  Терминал для работы с вводом от пользователя
         terminal.startKeyboard();
+
 
            }
     }

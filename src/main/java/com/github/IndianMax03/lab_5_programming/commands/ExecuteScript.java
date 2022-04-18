@@ -17,7 +17,7 @@ public class ExecuteScript implements Command {
 
     @Override
     public String execute(Invoker invoker, TreeSet<City> collection, String argument){
-        return receiver.executeScript(invoker, collection);
+        return receiver.executeScript(invoker, collection, argument);
     }
 
     @Override

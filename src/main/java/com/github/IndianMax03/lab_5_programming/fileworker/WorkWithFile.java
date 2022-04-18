@@ -43,10 +43,9 @@ public class WorkWithFile {
         return splittedLine;
     }
 
-    public String writeInFile(TreeSet<City> collection){
-        String pathToTarger =
-                "C:\\Users\\Acer\\Desktop\\Lab_5\\src\\main\\java\\com\\github\\indianMax03\\lab_5_programming\\Output.txt";
-        File file = new File(pathToTarger);
+    public String writeInFile(TreeSet<City> collection, String path){
+
+        File file = new File(path);
 
         try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file))) {
             for (City city : collection){
@@ -56,7 +55,7 @@ public class WorkWithFile {
             }
             return "Коллекция успешно записана в файл.";
         } catch (IOException e){
-            return "Файл не найден.";
+            return "Аргумент передан неверно.";
         }
 
     }

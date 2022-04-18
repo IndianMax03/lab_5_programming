@@ -16,7 +16,11 @@ public class Save implements Command {
 
     @Override
     public String execute (Invoker invoker, TreeSet<City> collection, String argument){
-        return receiver.save(collection);
+        if (argument.isEmpty()){
+            return "Команда save принимает аргумент - имя файла.";
+        } else {
+            return receiver.save(collection, argument);
+        }
     }
 
     @Override
