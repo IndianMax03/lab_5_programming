@@ -2,6 +2,9 @@ package com.github.indianMax03.lab_5_programming.base;
 
 import java.time.ZonedDateTime;
 
+/**
+ * Main class of collection
+ */
 public class City implements Comparable<City> {
 
     private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
@@ -48,8 +51,10 @@ public class City implements Comparable<City> {
                 this.metersAboveSeaLevel+","+this.climate+","+this.government+","+this.standardOfLiving+","+this.governor;
     }
 
-    // Getters and Setters
-
+    /**
+     *
+     * Getters and Setters
+     */
     public Long getId() {
         return id;
     }

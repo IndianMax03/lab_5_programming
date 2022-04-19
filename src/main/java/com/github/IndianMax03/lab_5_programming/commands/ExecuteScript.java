@@ -12,6 +12,9 @@ import java.util.TreeSet;
 
 public class ExecuteScript implements Command {
 
+    /**
+     * Recursion control
+     */
     private static final ArrayList<String> paths = new ArrayList<>();
 
     private final Receiver receiver;

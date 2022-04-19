@@ -6,8 +6,14 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
+/**
+ * Class works with adding cities
+ */
 public class Adder {
 
+    /**
+     * add command realisation
+     */
     public static String addCity(TreeSet<City> collection){
         City addingcity = createCity();
         if(collection.add(addingcity)){
@@ -17,6 +23,9 @@ public class Adder {
         }
     }
 
+    /**
+     * add_if_min command realisation
+     */
     public static String addCityIfMin(TreeSet<City> collection){
         City addingcity = createCity();
         if (addingcity.compareTo(collection.first()) < 0) {
@@ -27,6 +36,9 @@ public class Adder {
         }
     }
 
+    /**
+     * parser of input collection
+     */
     public static String canAddCityByArray(ArrayList<String> cityString, int line, TreeSet<City> collection){
         if (cityString.size() != 11){
             return "Город из строки " + line + " файла создать не удалось: передано неверное количество аргументов.";
@@ -42,6 +54,9 @@ public class Adder {
         }
     }
 
+    /**
+     * testing and adding cities from array
+     */
     private static City createCityByArray(ArrayList<String> citysFields){
 
         Validator validator = new Validator();
@@ -66,6 +81,9 @@ public class Adder {
         }
     }
 
+    /**
+     * testing and adding cities from the user input
+     */
     public static City createCity(){
 
         Tester tester = new Tester();
@@ -95,4 +113,5 @@ public class Adder {
         return new City(id, name, coordinates, creationDate, area, population, masl, climate, government,standardOfLiving,
                 governor);
     }
+
 }

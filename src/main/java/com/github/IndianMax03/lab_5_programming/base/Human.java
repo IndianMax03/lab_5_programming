@@ -3,6 +3,7 @@ package com.github.indianMax03.lab_5_programming.base;
 import java.time.ZonedDateTime;
 
 public class Human {
+
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Integer height; //Значение поля должно быть больше 0
     private ZonedDateTime birthday;
@@ -13,6 +14,9 @@ public class Human {
         setBirthday(birthday);
     }
 
+    /**
+     * Human factory
+     */
     public static Human randomHuman(String name){
         int height = ((int) (Math.random() * 200)) + 1;
         ZonedDateTime birthday = ZonedDateTime.now();
@@ -24,6 +28,9 @@ public class Human {
         return name;
     }
 
+    /**
+     * Getters and Setters
+     */
     public String getName() {
         return name;
     }

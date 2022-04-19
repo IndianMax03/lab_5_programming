@@ -4,7 +4,13 @@ import com.github.indianMax03.lab_5_programming.commands.*;
 import com.github.indianMax03.lab_5_programming.patterncommand.*;
 
 public class AddCommands {
+    /**
+     *
+     * @param invoker contains map of commands
+     * @param receiver contains commands realisation
+     */
     public static void addCommands(Invoker invoker, Receiver receiver){
+
         invoker.register("add", new Add(receiver));
         invoker.register("add_if_min", new AddIfMin(receiver));
         invoker.register("exit", new Exit(receiver));
@@ -21,5 +27,7 @@ public class AddCommands {
         invoker.register("help", new Help(receiver));
         invoker.register("save", new Save(receiver));
         invoker.register("execute_script", new ExecuteScript(receiver));
+
     }
+
 }

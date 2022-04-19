@@ -1,5 +1,4 @@
 package com.github.indianMax03.lab_5_programming.application;
-// helios ssh sXXXXXX@helios.se.ifmo.ru -p 2222
 import com.github.indianMax03.lab_5_programming.base.*;
 import com.github.indianMax03.lab_5_programming.fileworker.WorkWithFile;
 import com.github.indianMax03.lab_5_programming.patterncommand.*;
@@ -7,32 +6,52 @@ import com.github.indianMax03.lab_5_programming.patterncommand.*;
 import java.io.*;
 import java.util.*;
 
-// todo доделать команды save и exucite_script
-
-
+/**
+ * Main class
+ * @author Maxim Tuchkov
+ */
 public class Main {
 
     public static void main(String[] args) {
 
+        /**
+         * path to collection
+         */
         String path = System.getenv("path");
 
-        Invoker invoker = new Invoker(); //  Хранилище команд
-        TreeSet<City> collection = new TreeSet<>(); //  Main collection
-        Receiver receiver = new Receiver(); //  Коробка с командами
-        WorkWithFile fileworker = new WorkWithFile();
+        /**
+         * Stores a list of commands
+         */
+        Invoker invoker = new Invoker();
 
+        /**
+         * Main collection
+         */
+        TreeSet<City> collection = new TreeSet<>();
+
+        /**
+         * Contains realisation of commands
+         */
+        Receiver receiver = new Receiver();
+
+        /**
+         * Filling the collection
+         */
         try {
-            fileworker.fillCollection(collection, path); //  Автозаполнение коллекции
+            WorkWithFile fileworker = new WorkWithFile();
+            fileworker.fillCollection(collection, path);
         } catch (FileNotFoundException e) {
-            System.out.println("Файл с входной коллекцией не найден");
+            System.out.println("Файл с входной коллекцией не найден или недостаточно прав.");
             System.exit(0);
         }
 
-        AddCommands.addCommands(invoker, receiver); //  Заполнение командами invoker'а
+        /**
+         * Filling the command list
+         */
+        AddCommands.addCommands(invoker, receiver);
 
-        Terminal terminal = new Terminal(invoker, collection); //  Терминал для работы с вводом от пользователя
+        Terminal terminal = new Terminal(invoker, collection);
         terminal.startKeyboard();
-
 
            }
     }

@@ -1,15 +1,15 @@
 package com.github.indianMax03.lab_5_programming.addition;
 
-import com.github.indianMax03.lab_5_programming.base.Human;
-
-import java.util.Scanner;
-
+/**
+ * Enum of Governors
+ */
 public enum Leaders {
-    MAXIM("Максим Исполнитель"),
+
+    MAXIM("Максим Прогер"),
     MARTIN("Мартин Надзиратель"),
     ANTONY("Антон Терпила"),
     ANASTACY("Анастасия Милосердная"),
-    ILIA("Илья Бессмертный");
+    ILIA("Юникс Бессмертный");
 
     private final String title;
 

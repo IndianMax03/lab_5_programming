@@ -1,18 +1,18 @@
 package com.github.indianMax03.lab_5_programming.patterncommand;
 
 import com.github.indianMax03.lab_5_programming.application.Terminal;
-import com.github.indianMax03.lab_5_programming.base.City;
-import com.github.indianMax03.lab_5_programming.base.Government;
+import com.github.indianMax03.lab_5_programming.base.*;
 import com.github.indianMax03.lab_5_programming.input.*;
 import com.github.indianMax03.lab_5_programming.fileworker.WorkWithFile;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.ZonedDateTime;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.TreeSet;
 
+/**
+ * Responsible for the implementation of commands
+ */
 public class Receiver {
 
     private final ZonedDateTime creationDate;
@@ -134,17 +134,17 @@ public class Receiver {
     }
 
     public String removeGreater(TreeSet<City> collection){
-        System.out.println("Создайте элемент. Из коллекции будут удалены все элементы, превышающие заданный.");
+        System.out.println("Создайте элемент.");
         City delCity = Adder.createCity();
         collection.removeIf(city -> delCity.compareTo(city) > 0);
-        return "Из коллекции удалены элементы с заданным условием";
+        return "Элементы, меньшие, чем заданный, удалены.";
     }
 
     public String removeLower(TreeSet<City> collection){
-        System.out.println("Создайте элемент. Из коллекции будут удалены все элементы, меньшие, чем заданный.");
+        System.out.println("Создайте элемент.");
         City delCity = Adder.createCity();
         collection.removeIf(city -> delCity.compareTo(city) < 0);
-        return "Из коллекции удалены элементы с заданным условием";
+        return "Элементы, меньшие, чем заданный, удалены.";
     }
 
 

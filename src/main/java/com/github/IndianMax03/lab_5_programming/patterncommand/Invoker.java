@@ -6,6 +6,9 @@ import com.github.indianMax03.lab_5_programming.base.City;
 import java.util.HashMap;
 import java.util.TreeSet;
 
+/**
+ * Responsible for storing the list of commands
+ */
 public class Invoker {
 
     private final HashMap<String, Command> commandMap = new HashMap<>();

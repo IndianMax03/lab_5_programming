@@ -11,7 +11,9 @@ import java.util.TreeSet;
 
 public class WorkWithFile {
 
-    //todo ПУТЬ ДОЛЖНЫ ПОЛУЧАТЬ ПО-ДРУГОМУ
+    /**
+     * @param path to to file contains collection
+     */
     public void fillCollection(TreeSet<City> collectioin, String path) throws FileNotFoundException{
 
         File file = new File(path);
@@ -33,6 +35,9 @@ public class WorkWithFile {
         sc.close();
     }
 
+    /**
+     *  splits string with city's fields
+     */
     private ArrayList<String> splitting(String line){
         ArrayList<String> splittedLine = new ArrayList<>();
         Scanner scanner = new Scanner(line);
@@ -44,6 +49,9 @@ public class WorkWithFile {
         return splittedLine;
     }
 
+    /**
+     * file writer
+     */
     public String writeInFile(TreeSet<City> collection, String path){
 
         File file = new File(path);
@@ -56,7 +64,7 @@ public class WorkWithFile {
             }
             return "Коллекция успешно записана в файл.";
         } catch (IOException e){
-            return "Аргумент передан неверно.";
+            return "Аргумент передан неверно или не хватает прав на запись файла.";
         }
 
     }

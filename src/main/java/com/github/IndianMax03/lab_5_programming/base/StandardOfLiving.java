@@ -1,7 +1,5 @@
 package com.github.indianMax03.lab_5_programming.base;
 
-import java.util.Scanner;
-
 public enum StandardOfLiving {
     ULTRA_HIGH("Очень высокий"),
     HIGH("Высокий"),

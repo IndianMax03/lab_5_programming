@@ -8,6 +8,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.TreeSet;
 
+/**
+ * A class for processing input
+ */
 public class Terminal {
 
 	Scanner scanner;
@@ -21,6 +24,12 @@ public class Terminal {
 
 	}
 
+	/**
+	 *
+	 * @param filename
+	 * @return file execution result
+	 * @throws FileNotFoundException
+	 */
 	public String startFile(String filename) throws FileNotFoundException {
 
 		String pathToFile = new File(filename).getAbsolutePath();
@@ -45,6 +54,9 @@ public class Terminal {
 		return "Выполнение файла окончено.";
 	}
 
+	/**
+	 * User input
+	 */
 	protected void startKeyboard(){
 
 		this.scanner = new Scanner(System.in);
@@ -70,6 +82,12 @@ public class Terminal {
 		}
 	}
 
+	/**
+	 *
+	 * @param line input line
+	 * @return command execution result
+	 * @throws NullPointerException
+	 */
 	protected String lineHandler(String line) throws NullPointerException {
 
 		String[] commandLine = line.trim().split(" ");
