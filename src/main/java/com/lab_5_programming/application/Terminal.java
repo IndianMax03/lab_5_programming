@@ -1,5 +1,6 @@
 package com.lab_5_programming.application;
 
+import com.lab_5_programming.commands.ExecuteScript;
 import com.lab_5_programming.patterncommand.Invoker;
 import com.lab_5_programming.base.City;
 
@@ -48,11 +49,11 @@ public class Terminal {
 				}
 				System.out.println(out);
 			} catch (NullPointerException e){
-				return "В файле найдена несуществующая команда. Выполнение прекращено";
+				return "В файле найдена несуществующая команда. Выполнение прекращено.";
 			}
 
 		}
-		return "Выполнение файла окончено.";
+		return "Выполнение файла " + file +  " окончено.";
 	}
 
 	/**

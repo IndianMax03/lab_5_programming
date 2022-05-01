@@ -15,7 +15,7 @@ public class ExecuteScript implements Command {
     /**
      * Recursion control
      */
-    private static final ArrayList<String> paths = new ArrayList<>();
+    private final ArrayList<String> paths = new ArrayList<>();
 
     private final Receiver receiver;
 
@@ -29,9 +29,11 @@ public class ExecuteScript implements Command {
         if (filename.isEmpty()){
             return "Команда execute_script должна принимать аргумент file_name";
         } else {
+
             String file = new File(filename).getAbsolutePath();
 
             if (paths.contains(file)){
+                paths.clear();
                 return "Обнаружена рекурсия. Выполнение приостановлено.";
             } else{
                 paths.add(file);
@@ -39,11 +41,14 @@ public class ExecuteScript implements Command {
                     return receiver.executeScript(invoker, collection, filename);
                 } catch (FileNotFoundException e){
                     return "Такого файла не существует или недостаточно прав на исполнение.";
+                } finally {
+                    paths.clear();
                 }
             }
         }
 
     }
+
     @Override
     public String getHelp(){
         return "Введите execute_script file_name, считать и исполнить скрипт из указанного файла.";
