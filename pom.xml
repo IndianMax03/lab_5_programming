@@ -33,7 +33,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.github.indianMax03.lab_5_programming.application.Main</mainClass>
+                            <mainClass>com.lab_5_programming.application.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
