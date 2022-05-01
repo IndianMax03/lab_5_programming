@@ -1,7 +1,5 @@
 package com.lab_5_programming.application;
-import com.github.indianMax03.lab_5_programming.base.*;
 import com.lab_5_programming.fileworker.WorkWithFile;
-import com.github.indianMax03.lab_5_programming.patterncommand.*;
 import com.lab_5_programming.base.City;
 import com.lab_5_programming.patterncommand.Invoker;
 import com.lab_5_programming.patterncommand.Receiver;
