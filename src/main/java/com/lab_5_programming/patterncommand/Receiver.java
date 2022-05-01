@@ -46,6 +46,9 @@ public class Receiver {
     }
 
     public String addIfMin(TreeSet<City> collection){
+        if (collection.isEmpty()){
+            return "Коллекция пуста. Создайте хотя бы один элемент, чтобы использовать эту команду.";
+        }
         System.out.println("Следующий введённый город будет добавлен в колекцию в случае, если его поле population будет " +
                 "наименьшим в коллекции.");
         System.out.println("На данный момент в коллекции наименьшее значение поля population = " + collection.first().getPopulation());

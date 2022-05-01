@@ -83,6 +83,8 @@ public class Terminal {
 				System.out.println(out);
 			} catch (NullPointerException e){
 				System.out.println("Такой команды не существует.");
+			} catch (NoSuchElementException e){
+				break;
 			}
 
 		}
