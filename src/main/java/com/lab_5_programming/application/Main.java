@@ -16,11 +16,6 @@ public class Main {
     public static void main(String[] args) {
 
         /**
-         * path to collection
-         */
-        String path = System.getenv("path");
-
-        /**
          * Stores a list of commands
          */
         Invoker invoker = new Invoker();
@@ -40,9 +35,9 @@ public class Main {
          */
         try {
             WorkWithFile fileworker = new WorkWithFile();
-            fileworker.fillCollection(collection, path);
-        } catch (FileNotFoundException e) {
-            System.out.println("Файл с входной коллекцией не найден или недостаточно прав.");
+            fileworker.fillCollection(collection);
+        } catch (IOException e) {
+            System.out.println("Файл с входной коллекцией не найден или недостаточно прав на чтение.");
             System.exit(0);
         }
 

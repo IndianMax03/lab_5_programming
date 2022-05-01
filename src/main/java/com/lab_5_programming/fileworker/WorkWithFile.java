@@ -11,14 +11,14 @@ import java.util.TreeSet;
 
 public class WorkWithFile {
 
+    final String path = System.getenv("path");
+
     /**
-     * @param path to to file contains collection
+     * filling the collection by environment variable
      */
-    public void fillCollection(TreeSet<City> collectioin, String path) throws FileNotFoundException{
+    public void fillCollection(TreeSet<City> collectioin) throws IOException{
 
-        File file = new File(path);
-
-       Scanner sc = new Scanner(file);
+       Scanner sc = new Scanner(new File(path));
 
         int i = 1;
 
@@ -54,10 +54,7 @@ public class WorkWithFile {
      */
     public String writeInFile(TreeSet<City> collection){
 
-        String path = System.getenv("path");
-        File file = new File(path);
-
-        try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(file))) {
+        try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(path))) {
             for (City city : collection){
                 byte[] s = city.cityToString().getBytes(StandardCharsets.UTF_8);
                 out.write(s);
@@ -65,7 +62,7 @@ public class WorkWithFile {
             }
             return "Коллекция успешно записана в файл.";
         } catch (IOException e){
-            return "Аргумент передан неверно или не хватает прав на запись файла.";
+            return "Не хватает прав на запись в файл.";
         }
 
     }
