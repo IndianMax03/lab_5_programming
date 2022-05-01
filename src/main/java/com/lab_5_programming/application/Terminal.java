@@ -5,6 +5,7 @@ import com.lab_5_programming.base.City;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.TreeSet;
 
@@ -67,7 +68,12 @@ public class Terminal {
 
 			System.out.print("Введите команду:\n>");
 
-			String commandline = scanner.nextLine();
+			String commandline = "";
+			try{
+				commandline = scanner.nextLine();
+			} catch(NoSuchElementException e){
+				break;
+			}
 
 			try {
 				out = lineHandler(commandline);
