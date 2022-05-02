@@ -98,7 +98,7 @@ public class Terminal {
 		while (line.contains("  ")){
 			line = line.replace("  ", " ");
 		}
-		String[] commandLine = line.split(" ");
+		String[] commandLine = line.trim().split(" ");
 		String command = commandLine[0].trim();
 
 		if (commandLine.length == 1) {
