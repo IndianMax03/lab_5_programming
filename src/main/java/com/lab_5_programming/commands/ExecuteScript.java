@@ -27,7 +27,13 @@ public class ExecuteScript implements Command {
     public String execute(Invoker invoker, TreeSet<City> collection, String filename){
 
         if (filename.isEmpty()){
+
             return "Команда execute_script должна принимать аргумент file_name";
+
+        } else if(new File(filename).isDirectory()){
+
+            return "В качестве аргумента передана директория. Повторите попытку.";
+
         } else {
 
             String file = new File(filename).getAbsolutePath();

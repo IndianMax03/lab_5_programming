@@ -1,6 +1,5 @@
 package com.lab_5_programming.application;
 
-import com.lab_5_programming.commands.ExecuteScript;
 import com.lab_5_programming.patterncommand.Invoker;
 import com.lab_5_programming.base.City;
 
@@ -28,9 +27,7 @@ public class Terminal {
 
 	/**
 	 *
-	 * @param filename
 	 * @return file execution result
-	 * @throws FileNotFoundException
 	 */
 	public String startFile(String filename) throws FileNotFoundException {
 
@@ -95,7 +92,6 @@ public class Terminal {
 	 *
 	 * @param line input line
 	 * @return command execution result
-	 * @throws NullPointerException
 	 */
 	protected String lineHandler(String line) throws NullPointerException {
 
