@@ -66,7 +66,7 @@ public class Terminal {
 
 			System.out.print("Введите команду:\n>");
 
-			String commandline = "";
+			String commandline;
 			try{
 				commandline = scanner.nextLine();
 			} catch(NoSuchElementException e){
@@ -95,7 +95,10 @@ public class Terminal {
 	 */
 	protected String lineHandler(String line) throws NullPointerException {
 
-		String[] commandLine = line.trim().split(" ");
+		while (line.contains("  ")){
+			line = line.replace("  ", " ");
+		}
+		String[] commandLine = line.split(" ");
 		String command = commandLine[0].trim();
 
 		if (commandLine.length == 1) {

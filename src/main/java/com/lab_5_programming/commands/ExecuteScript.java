@@ -32,7 +32,7 @@ public class ExecuteScript implements Command {
 
         } else if(new File(filename).isDirectory()){
 
-            return "В качестве аргумента передана директория. Повторите попытку.";
+            return "В качестве аргумента передана директория.";
 
         } else {
 
