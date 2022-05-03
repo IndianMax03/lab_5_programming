@@ -38,7 +38,10 @@ public class Main {
             fileworker.fillCollection(collection);
         } catch (IOException e) {
             System.out.println("Файл с входной коллекцией не найден или недостаточно прав на чтение.");
-            System.exit(0);
+            return;
+        } catch (NullPointerException e){
+            System.out.println("При запуске программы необходимо передать переменную окружения path.");
+            return;
         }
 
         /**
