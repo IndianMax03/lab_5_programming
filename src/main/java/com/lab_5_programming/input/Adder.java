@@ -76,7 +76,7 @@ public class Adder {
 
         try {
         for (String field : citysFields){
-            if (field.equals("null")) throw new Exception();
+            if (field.equals("null")) throw new NullPointerException();
         }
             return new City(id, name, coordinates, creationDate, area, population, masl, climate, government, standardOfLiving,
                     leader);
