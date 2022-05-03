@@ -111,9 +111,19 @@ public class Receiver {
 
             if (government.toString().equals(argument)){
 
-                collection.removeIf(city -> city.getGovernment().equals(government));
+                boolean flag = false;
 
-                return "Элементы коллекции с заданным условием удалены.";
+                for (City city : collection){
+                    if (city.getGovernment().equals(government)){
+                        collection.remove(city);
+                        flag = true;
+                    }
+                }
+                if (flag) {
+                    return "Элементы коллекции с заданным условием удалены.";
+                } else {
+                    return "Элементов коллекции с заданным полем government не найдено.";
+                }
             }
 
         }
