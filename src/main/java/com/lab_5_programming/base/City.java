@@ -51,6 +51,10 @@ public class City implements Comparable<City> {
                 this.metersAboveSeaLevel+","+this.climate+","+this.government+","+this.standardOfLiving+","+this.governor;
     }
 
+    public String cityToShow(){
+        return "Город: \"" + name + "\", id: " + id + ";";
+    }
+
     /**
      *
      * Getters and Setters

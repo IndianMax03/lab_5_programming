@@ -60,7 +60,11 @@ public class Receiver {
             return "Коллекция пуста.";
         } else {
             System.out.println("Элементы коллекции в строковом предствлении: ");
-            return collection.toString();
+            StringBuilder s = new StringBuilder();
+            for (City city : collection){
+                s.append(city.cityToShow());
+            }
+            return s.toString();
         }
     }
 
