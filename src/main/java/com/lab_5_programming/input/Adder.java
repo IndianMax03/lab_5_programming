@@ -2,6 +2,7 @@ package com.lab_5_programming.input;
 
 import com.lab_5_programming.base.*;
 
+import java.lang.reflect.Field;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.TreeSet;
@@ -74,6 +75,9 @@ public class Adder {
         Human leader = validator.checkLeadersByNameValid(citysFields.get(10));
 
         try {
+        for (String field : citysFields){
+            if (field.equals("null")) throw new NullPointerException();
+        }
             return new City(id, name, coordinates, creationDate, area, population, masl, climate, government, standardOfLiving,
                     leader);
         } catch (Exception e){
