@@ -15,24 +15,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /**
-         * Stores a list of commands
-         */
         Invoker invoker = new Invoker();
 
-        /**
-         * Main collection
-         */
         TreeSet<City> collection = new TreeSet<>();
 
-        /**
-         * Contains realisation of commands
-         */
         Receiver receiver = new Receiver();
 
-        /**
-         * Filling the collection
-         */
         try {
             WorkWithFile fileworker = new WorkWithFile();
             fileworker.fillCollection(collection);
@@ -44,9 +32,6 @@ public class Main {
             return;
         }
 
-        /**
-         * Filling the command list
-         */
         AddCommands.addCommands(invoker, receiver);
 
         Terminal terminal = new Terminal(invoker, collection);

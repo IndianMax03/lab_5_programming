@@ -145,6 +145,7 @@ public class Receiver {
        for (City city : collection){
            if (city.getId().equals(id)){
                element = city + " удалён из коллекции.";
+               collection.remove(city);
                break;
            }
        }
